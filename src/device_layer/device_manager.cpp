@@ -1,4 +1,5 @@
 #include "device_manager.hpp"
+#include "hardware_layer/hardware_manager.hpp"
 
 namespace Manager
 {

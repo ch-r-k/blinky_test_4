@@ -1,7 +1,6 @@
 #pragma once
 
 #include "hardware_layer/gpio/gpio.hpp"
-#include "hardware_layer/hardware_manager.hpp"
 #include "device_layer/user_indication/user_indication.hpp"
 
 namespace Manager
@@ -9,6 +8,8 @@ namespace Manager
 
 using DeviceLayer::UserIndication;
 using HardwareLayer::Gpio;
+
+class HardwareManager;
 
 class DeviceManager
 {

@@ -1,5 +1,8 @@
 #include "application_manager.hpp"
 #include <cstddef>
+#include "application_layer/blinky/blinky.hpp"
+#include "device_layer/user_indication/user_indication.hpp"
+#include "hardware_layer/gpio/gpio.hpp"
 
 namespace Manager
 {

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "application_layer/application_manager.hpp"
 #include "device_layer/device_manager.hpp"
 #include "hardware_layer/hardware_manager.hpp"

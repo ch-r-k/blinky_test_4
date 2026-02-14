@@ -5,13 +5,7 @@ diagrams:
   application:
     type: class
     generate_packages: true
+
     generate_method_arguments: abbreviated
-    exclude:
-      namespaces:
-        - std
-        - nlohmann
-        - types
-        - test
-        - testing
     glob:
       - src/**/*.cpp

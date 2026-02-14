@@ -2,6 +2,8 @@
 
 #include "hardware_layer/gpio/gpio.hpp"
 
+using HardwareLayer::Gpio;
+
 namespace Manager
 {
 class HardwareManager
@@ -9,9 +11,9 @@ class HardwareManager
    public:
     HardwareManager();
 
-    HardwareLayer::Gpio& getGpio0();
+    Gpio& getGpio0();
 
    private:
-    HardwareLayer::Gpio gpio{1};
+    Gpio gpio{1};
 };
 }  // namespace Manager

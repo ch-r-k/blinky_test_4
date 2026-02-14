@@ -5,7 +5,9 @@
 namespace ApplicationLayer
 {
 
-template <DeviceLayer::UserIndicationConcept IUserIndication>
+using DeviceLayer::UserIndicationConcept;
+
+template <UserIndicationConcept IUserIndication>
 class Blinky
 {
    private:

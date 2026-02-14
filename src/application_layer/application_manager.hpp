@@ -3,6 +3,15 @@
 #include "blinky/blinky.hpp"
 #include "device_layer/device_manager.hpp"
 
+namespace DeviceLayer
+{
+template <HardwareLayer::GpioConcept IGpio>
+class UserIndication;
+}
+namespace HardwareLayer
+{
+class Gpio;
+}
 namespace Manager
 {
 
