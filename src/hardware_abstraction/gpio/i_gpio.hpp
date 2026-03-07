@@ -7,20 +7,11 @@ namespace HardwareLayer
 {
 
 template <typename T>
-concept GpioConcept = requires(T gpio)
-{
-    {
-        gpio.open()
-        } -> std::same_as<void>;
-    {
-        gpio.close()
-        } -> std::same_as<void>;
-    {
-        gpio.set()
-        } -> std::same_as<void>;
-    {
-        gpio.reset()
-        } -> std::same_as<void>;
+concept IGpioConcept = requires(T gpio) {
+    { gpio.open() } -> std::same_as<void>;
+    { gpio.close() } -> std::same_as<void>;
+    { gpio.set() } -> std::same_as<void>;
+    { gpio.reset() } -> std::same_as<void>;
 };
 
-}  // namespace HardwareLayer
+}    // namespace HardwareLayer

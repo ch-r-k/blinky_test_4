@@ -1,24 +1,37 @@
 #pragma once
 
-#include "hardware_abstraction/gpio/i_gpio.hpp"
-
+#include <iostream>
+#include "device_abstraction/user_indication/i_user_indication.hpp"
+#include "hardware_abstraction/gpio/icb_gpio.hpp"
 namespace DeviceLayer
 {
 
-template <HardwareLayer::GpioConcept IGpio>
-class UserIndication
+using HardwareLayer::IcbGpioConcept;
+
+template <typename System> class UserIndication
 {
-   private:
-    IGpio& i_gpio;
+  public:
+    UserIndication(System& sys) : system(sys)
+    {
+        using UserIndication
+            = decltype(std::declval<System&>().user_indication);
+        static_assert(IcbGpioConcept<UserIndication>,
+                      "must satisfy IcbGpioConcept");
 
-   public:
-    UserIndication(IGpio& i_gpio) : i_gpio(i_gpio) { i_gpio.open(); }
+        static_assert(IUserIndicationConcept<UserIndication>,
+                      "must satisfy IUserIndication");
 
-    ~UserIndication() { i_gpio.close(); }
+        system.gpio.open();
+    }
 
-    void set() { i_gpio.set(); }
+    void set() { system.gpio.set(); }
 
-    void reset() { i_gpio.reset(); }
+    void reset() { system.gpio.reset(); }
+
+    void done() { system.blinky.done(); }
+
+  private:
+    System& system;
 };
 
-}  // namespace DeviceLayer
+}    // namespace DeviceLayer

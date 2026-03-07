@@ -1,6 +1,330 @@
-BasedOnStyle: Google
-IndentWidth: 4
-UseTab: Never
-SortIncludes: false
+# Language setting for the formatter
+Language: Cpp
+
+# Indentation settings
+IndentWidth: 4  # Number of spaces for indentation
+UseTab: Never   # Use spaces instead of tabs
+
+# Alignment settings
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: None
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: true
+  AlignCompound: true
+  PadOperators: true
+AlignConsecutiveBitFields:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: true
+  AlignCompound: true
+  PadOperators: true
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+  AlignCompound: false
+  PadOperators: false
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: true
+  AlignCompound: true
+  PadOperators: true
+
+# Alignment of escaped newlines and operands
+AlignEscapedNewlines: Right
+AlignOperands: Align
+
+# Trailing comments alignment
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 0
+
+# Allow short blocks and statements on a single line
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
+AllowShortLoopsOnASingleLine: false
+
+# Breaking settings for various elements
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: MultiLine
+
+# Attribute macros
+AttributeMacros:
+  - __capability
+
+# Bin packing settings
+BinPackArguments: true
+BinPackParameters: true
+
+# Bit field colon spacing
+BitFieldColonSpacing: Both
+
+# Brace wrapping settings
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterExternBlock: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: false
+  BeforeWhile: true
+  IndentBraces: true
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+# Break settings for attributes, arrays, operators, etc.
+BreakAfterAttributes: Never
+BreakAfterJavaFieldAnnotations: false
+BreakArrays: true
+BreakBeforeBinaryOperators: All
+BreakBeforeConceptDeclarations: Always
 BreakBeforeBraces: Allman
+BreakBeforeInlineASMColon: OnlyMultiline
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: BeforeColon
+BreakStringLiterals: true
+
+# Column limit for line length
+ColumnLimit: 80
+
+# Comment pragmas
+CommentPragmas: '^ IWYU pragma:'
+
+# Compact namespaces setting
+CompactNamespaces: false
+
+# Indentation width for constructor initializers and continuation lines
+ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
+
+# C++11 braced list style
+Cpp11BracedListStyle: false
+
+# Pointer alignment setting
+DerivePointerAlignment: false
+
+# Disable formatting
+DisableFormat: false
+
+# Empty line settings for access modifiers
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: LogicalBlock
+
+# Experimental auto-detect bin packing
+ExperimentalAutoDetectBinPacking: false
+
+# Fix namespace comments
+FixNamespaceComments: true
+
+# Macros for foreach loops
+ForEachMacros:
+  - foreach
+  - Q_FOREACH
+  - BOOST_FOREACH
+
+# Macros for if statements
+IfMacros:
+  - KJ_IF_MAYBE
+
+# Include blocks setting
+IncludeBlocks: Preserve
+
+# Include categories for sorting
+IncludeCategories:
+  - Regex: '^<.*>'
+    Priority: 1
+    SortPriority: 1
+    CaseSensitive: false
+  - Regex: '^"(gtest|gmock|isl|json)/'
+    Priority: 2
+    SortPriority: 2
+    CaseSensitive: false
+  - Regex: '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority: 3
+    SortPriority: 3
+    CaseSensitive: false
+  - Regex: '.*'
+    Priority: 4
+    SortPriority: 4
+    CaseSensitive: false
+
+# Regex for main include files
+IncludeIsMainRegex: '(Test)?$'
+IncludeIsMainSourceRegex: ''
+
+# Indentation settings for various elements
+IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: true
+IndentExternBlock: AfterExternBlock
+IndentGotoLabels: true
+IndentPPDirectives: None
+IndentRequiresClause: true
+IndentWrappedFunctionNames: false
+
+# Insert settings for braces, newlines, and trailing commas
+InsertBraces: false
+InsertNewlineAtEOF: false
+InsertTrailingCommas: None
+
+# Integer literal separator settings
+IntegerLiteralSeparator:
+  Binary: 0
+  BinaryMinDigits: 0
+  Decimal: 0
+  DecimalMinDigits: 0
+  Hex: 0
+  HexMinDigits: 0
+
+# JavaScript quotes and wrap imports settings
+JavaScriptQuotes: Leave
+JavaScriptWrapImports: true
+
+# Keep empty lines at the start of blocks
+KeepEmptyLinesAtTheStartOfBlocks: true
+
+# Lambda body indentation setting
+LambdaBodyIndentation: Signature
+
+# Line ending setting
+LineEnding: DeriveLF
+
+# Macro block settings
+MacroBlockBegin: ''
+MacroBlockEnd: ''
+
+# Maximum empty lines to keep
+MaxEmptyLinesToKeep: 1
+
+# Namespace indentation setting
+NamespaceIndentation: None
+
+# Packing constructor initializers
+PackConstructorInitializers: BinPack
+
+# Penalty settings for various elements
+PenaltyBreakAssignment: 2
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakOpenParenthesis: 0
+PenaltyBreakString: 1000
+PenaltyBreakTemplateDeclaration: 10
+PenaltyExcessCharacter: 1000000
+PenaltyIndentedWhitespace: 0
+PenaltyReturnTypeOnItsOwnLine: 60
+
+# Pointer alignment setting
+PointerAlignment: Left
+
+# Preprocessor directive indentation width
+PPIndentWidth: -1
+
+# Qualifier alignment setting
+QualifierAlignment: Leave
+
+# Reference alignment setting
+ReferenceAlignment: Pointer
+
+# Reflow comments setting
+ReflowComments: true
+
+# Remove braces and semicolon settings
+RemoveBracesLLVM: false
+RemoveSemicolon: false
+
+# Requires clause position setting
+RequiresClausePosition: OwnLine
+
+# Requires expression indentation setting
+RequiresExpressionIndentation: OuterScope
+
+# Separate definition blocks setting
+SeparateDefinitionBlocks: Leave
+
+# Short namespace lines setting
+ShortNamespaceLines: 1
+
+# Sorting settings for includes and using declarations
+SortIncludes: true
+SortJavaStaticImport: Before
+SortUsingDeclarations: LexicographicNumeric
+
+# Space settings for various elements
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeParensOptions:
+  AfterControlStatements: false
+  AfterForeachMacros: false
+  AfterFunctionDefinitionName: false
+  AfterFunctionDeclarationName: false
+  AfterIfMacros: false
+  AfterOverloadedOperator: false
+  AfterRequiresInClause: false
+  AfterRequiresInExpression: false
+  BeforeNonEmptyParentheses: false
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 4
+SpacesInAngles: Never
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: true
+SpacesInCStyleCastParentheses: false
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: -1
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+# Standard setting
+Standard: c++20
+
+# Statement attribute-like macros
+StatementAttributeLikeMacros:
+  - Q_EMIT
+
+# Statement macros
+StatementMacros:
+  - Q_UNUSED
+  - QT_REQUIRE_VERSION
+
+# Tab width setting
+TabWidth: 8
+
+# Whitespace-sensitive macros
+WhitespaceSensitiveMacros:
+  - BOOST_PP_STRINGIZE
+  - CF_SWIFT_NAME
+  - NS_SWIFT_NAME
+  - PP_STRINGIZE
+  - STRINGIZE

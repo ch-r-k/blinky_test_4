@@ -1,22 +1,42 @@
 #pragma once
-
 #include <cstdint>
+#include <iostream>
+#include "hardware_abstraction/gpio/i_gpio.hpp"
 
 namespace HardwareLayer
 {
 
-class Gpio
+template <typename System> class Gpio
 {
-   public:
-    Gpio(std::uint8_t pin);
-    ~Gpio() = default;
+  public:
+    Gpio(System&      sys,    //
+         std::uint8_t pin)
+        : system(sys),    //
+          pin(pin)
+    {
+        using GpioType = decltype(std::declval<System&>().gpio);
+        static_assert(IGpioConcept<GpioType>,
+                      "System.gpio must satisfy IGpioConcept");
+    }
 
-    void open();
-    void close();
-    void set();
-    void reset();
+    void open() { std::cout << "Open Pin " << pin << "\n"; }
+    void close() { std::cout << "Close Pin " << pin << "\n"; }
 
-   private:
-    std::uint8_t pin{0};
+    void set()
+    {
+        std::cout << "Set Pin " << pin << "\n";
+        system.user_indication.done();
+    }
+
+    void reset()
+    {
+        std::cout << "Reset Pin " << pin << "\n";
+        system.user_indication.done();
+    }
+
+  private:
+    System&      system;
+    std::uint8_t pin;
 };
-}  // namespace HardwareLayer
+
+}    // namespace HardwareLayer
