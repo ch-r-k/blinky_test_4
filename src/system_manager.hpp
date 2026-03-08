@@ -14,9 +14,12 @@ using HardwareLayer::Gpio;
 class SystemManager
 {
   public:
-    Gpio<SystemManager>                 gpio{ *this, 1 };
-    UserIndication<Gpio<SystemManager>> user_indication{ gpio };
-    Blinky<SystemManager>               blinky{ *this };
+    Gpio<SystemManager>                                gpio{ *this, 1 };
+    UserIndication<Gpio<SystemManager>, SystemManager> user_indication{ gpio,
+                                                                        *this };
+    Blinky<UserIndication<Gpio<SystemManager>, SystemManager>> blinky{
+        user_indication
+    };
 
     //
     void run()
@@ -28,7 +31,7 @@ class SystemManager
     }
 
     // callbacks
-    void gpioCallback() {};
+    void gpioCallback() { user_indication.done(); };
     void userIndicationCallback() { blinky.done(); };
 };
 

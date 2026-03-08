@@ -1,30 +1,31 @@
 #pragma once
 
 #include <iostream>
-#include "device_abstraction/user_indication/has_user_indication.hpp"
-#include "device_abstraction/user_indication/icb_user_indication.hpp"
+#include "device_abstraction/user_indication/i_user_indication.hpp"
 
 namespace ApplicationLayer
 {
 
-using DeviceLayer::HasUserIndicationConcept;
-using DeviceLayer::IcbUserIndicationConcept;
+using DeviceLayer::IUserIndicationConcept;
 
-template <typename System> class Blinky
+template <IUserIndicationConcept IUserIndication> class Blinky
 {
   public:
-    Blinky(System& sys) : system(sys) {}
+    Blinky(IUserIndication& i_user_indication_ref)
+        : i_user_indication(i_user_indication_ref)
+    {
+    }
 
     void run()
     {
-        system.user_indication.set();
-        system.user_indication.reset();
+        i_user_indication.set();
+        i_user_indication.reset();
     }
 
     void done() { std::cout << "Callback Done \n"; }
 
   private:
-    System& system;
+    IUserIndication& i_user_indication;
 };
 
 }    // namespace ApplicationLayer
