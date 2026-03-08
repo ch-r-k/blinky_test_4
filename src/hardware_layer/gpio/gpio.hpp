@@ -25,13 +25,13 @@ template <typename System> class Gpio
     void set()
     {
         std::cout << "Set Pin " << pin << "\n";
-        system.user_indication.done();
+        system.gpioCallback();
     }
 
     void reset()
     {
         std::cout << "Reset Pin " << pin << "\n";
-        system.user_indication.done();
+        system.gpioCallback();
     }
 
   private:

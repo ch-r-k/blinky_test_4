@@ -13,15 +13,7 @@ using DeviceLayer::IcbUserIndicationConcept;
 template <typename System> class Blinky
 {
   public:
-    Blinky(System& sys) : system(sys)
-    {
-        static_assert(HasUserIndicationConcept<System>,
-                      "System must have UserIndication");
-
-        using Blinky = decltype(std::declval<System&>().blinky);
-        static_assert(DeviceLayer::IcbUserIndicationConcept<Blinky>,
-                      "this must implement callback");
-    }
+    Blinky(System& sys) : system(sys) {}
 
     void run()
     {

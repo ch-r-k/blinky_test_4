@@ -14,17 +14,22 @@ using HardwareLayer::Gpio;
 class SystemManager
 {
   public:
-    Gpio<SystemManager>           gpio{ *this, 1 };
-    UserIndication<SystemManager> user_indication{ *this };
-    Blinky<SystemManager>         blinky{ *this };
+    Gpio<SystemManager>                 gpio{ *this, 1 };
+    UserIndication<Gpio<SystemManager>> user_indication{ gpio };
+    Blinky<SystemManager>               blinky{ *this };
 
-    void                          run()
+    //
+    void run()
     {
         for (int i = 0; i < 10; i++)
         {
             blinky.run();
         }
     }
+
+    // callbacks
+    void gpioCallback() {};
+    void userIndicationCallback() { blinky.done(); };
 };
 
 }    // namespace Manager
