@@ -5,6 +5,7 @@ diagrams:
   application:
     type: class
     generate_packages: true
+    generate_concept_requirements: false
 
     generate_method_arguments: abbreviated
     glob:
