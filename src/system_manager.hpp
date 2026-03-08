@@ -13,13 +13,14 @@ using HardwareLayer::Gpio;
 
 class SystemManager
 {
+    using GpioType           = Gpio<SystemManager>;
+    using UserIndicationType = UserIndication<GpioType, SystemManager>;
+    using BlinkyType         = Blinky<UserIndicationType>;
+
   public:
-    Gpio<SystemManager>                                gpio{ *this, 1 };
-    UserIndication<Gpio<SystemManager>, SystemManager> user_indication{ gpio,
-                                                                        *this };
-    Blinky<UserIndication<Gpio<SystemManager>, SystemManager>> blinky{
-        user_indication
-    };
+    GpioType           gpio{ *this, 1 };
+    UserIndicationType user_indication{ gpio, *this };
+    BlinkyType         blinky{ user_indication };
 
     //
     void run()
