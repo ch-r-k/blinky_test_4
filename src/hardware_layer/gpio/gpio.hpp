@@ -1,42 +1,50 @@
 #pragma once
 #include <cstdint>
 #include <iostream>
-#include "hardware_abstraction/gpio/i_gpio.hpp"
-
+#include "hardware_abstraction/gpio/icb_gpio.hpp"
 namespace HardwareLayer
 {
 
-template <typename System> class Gpio
+template <typename IcbGpio> class Gpio
 {
   public:
-    Gpio(System&      sys,    //
+    Gpio(IcbGpio&     icb_gpio_ref,    //
          std::uint8_t pin)
-        : system(sys),    //
+        : icb_gpio(icb_gpio_ref),    //
           pin(pin)
     {
-        using GpioType = decltype(std::declval<System&>().gpio);
-        static_assert(IGpioConcept<GpioType>,
-                      "System.gpio must satisfy IGpioConcept");
     }
 
-    void open() { std::cout << "Open Pin " << pin << "\n"; }
-    void close() { std::cout << "Close Pin " << pin << "\n"; }
-
-    void set()
-    {
-        std::cout << "Set Pin " << pin << "\n";
-        system.gpioCallback();
-    }
-
-    void reset()
-    {
-        std::cout << "Reset Pin " << pin << "\n";
-        system.gpioCallback();
-    }
+    void open();
+    void close();
+    void set();
+    void reset();
 
   private:
-    System&      system;
+    IcbGpio&     icb_gpio;
     std::uint8_t pin;
 };
+
+template <typename IcbGpio> void Gpio<IcbGpio>::open()
+{
+    std::cout << "Open Pin " << pin << "\n";
+}
+
+template <typename IcbGpio> void Gpio<IcbGpio>::close()
+{
+    std::cout << "Close Pin " << pin << "\n";
+}
+
+template <typename IcbGpio> void Gpio<IcbGpio>::set()
+{
+    std::cout << "Set Pin " << pin << "\n";
+    icb_gpio.gpioCallback();
+}
+
+template <typename IcbGpio> void Gpio<IcbGpio>::reset()
+{
+    std::cout << "Reset Pin " << pin << "\n";
+    icb_gpio.gpioCallback();
+}
 
 }    // namespace HardwareLayer
